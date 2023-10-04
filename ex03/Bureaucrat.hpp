@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymarival <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 12:40:03 by ymarival          #+#    #+#             */
-/*   Updated: 2023/09/23 12:40:03 by ymarival         ###   ########.fr       */
+/*   Created: 2023/09/30 07:28:42 by ymarival          #+#    #+#             */
+/*   Updated: 2023/09/30 07:28:42 by ymarival         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "Form.hpp"
 #include <cstdlib>
+#include <cstddef>
+
+class Form;
 
 class Bureaucrat
 {
@@ -29,13 +33,17 @@ public:
     Bureaucrat( const Bureaucrat& src );
     ~Bureaucrat();
 
-    Bureaucrat& operator=( const Bureaucrat& rhs );
+    Bureaucrat  &operator=( const Bureaucrat& rhs );
 
     std::string getName() const;
     int         getGrade() const;
 
     void        incrementGrade();
     void        decrementGrade();
+
+    void        signForm( Form& form );
+
+    void        executeForm( const Form& form ) const;  
 
     /* ---------------- Exception Classes ---------------- */
     class GradeTooHighException : public std::exception {
